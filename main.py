@@ -1,6 +1,7 @@
 import argparse
 import logging
 import random
+import sys
 import numpy as np
 import pandas as pd
 
@@ -51,6 +52,10 @@ def add_noise(data, column_name, min_noise, max_noise, seed=None):
             np.random.seed(seed)  # Set seed for numpy as well
             random.seed(seed)       # Set seed for python's random
 
+        # The noise is multiplicative by design: it scales with the value,
+        # so large and small figures are perturbed proportionally. The
+        # tradeoff is that a zero stays zero; additive noise would move it
+        # but would swamp small values.
         data[column_name] = data[column_name].apply(
             lambda x: x * (1 + np.random.uniform(min_noise, max_noise))
         )
@@ -91,10 +96,13 @@ def main():
 
     except FileNotFoundError:
         logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
     except pd.errors.EmptyDataError:
         logging.error(f"Input file is empty: {args.input_file}")
+        sys.exit(1)
     except Exception as e:
         logging.error(f"An error occurred: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
