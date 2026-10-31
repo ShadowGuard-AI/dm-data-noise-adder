@@ -2,6 +2,7 @@ import argparse
 import logging
 import random
 import sys
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
@@ -78,6 +79,10 @@ def main():
     Main function to parse arguments, read data, add noise, and save the result.
     """
     args = setup_argparse()
+
+    if Path(args.output_file).resolve() == Path(args.input_file).resolve():
+        print("Error: Output file must not be the input file.")
+        sys.exit(1)
 
     try:
         # Read the input CSV file

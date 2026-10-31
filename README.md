@@ -15,5 +15,7 @@ Adds random noise to numerical data within a specified range to protect privacy 
 - `--max_noise`: No description provided
 - `--seed`: Random seed for reproducibility. Default: None
 
+The output file must not name the input file. A run whose resolved output path is the input file, including through a `./` spelling or a symlink, is refused at exit 1 before any write.
+
 ## License
 Copyright (c) ShadowStrikeHQ
