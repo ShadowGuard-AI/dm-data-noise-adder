@@ -50,6 +50,12 @@ def add_noise(data, column_name, min_noise, max_noise, seed=None):
             raise ValueError("min_noise must be less than max_noise.")
 
         if seed is not None:
+            # Seeding sits after the validation above on purpose: a bad
+            # column or a bad range fails before I touch any random state.
+            # Both seeds set the global generators, not a private one, so
+            # calling this function reseeds random for whatever imported it.
+            # Only numpy draws numbers below; the random seed is set anyway
+            # so the two generators never tell different stories about a run.
             np.random.seed(seed)  # Set seed for numpy as well
             random.seed(seed)       # Set seed for python's random
 
@@ -57,6 +63,12 @@ def add_noise(data, column_name, min_noise, max_noise, seed=None):
         # so large and small figures are perturbed proportionally. The
         # tradeoff is that a zero stays zero; additive noise would move it
         # but would swamp small values.
+        # Two consequences I accept with this shape: a missing value stays
+        # missing, because NaN times any factor is still NaN, and nothing
+        # checks min_noise against -1, so a range past -1 can flip a value
+        # through zero and change its sign. The assignment also edits the
+        # caller's frame in place; the return value is that same frame, not
+        # a copy, whatever the signature suggests.
         data[column_name] = data[column_name].apply(
             lambda x: x * (1 + np.random.uniform(min_noise, max_noise))
         )
