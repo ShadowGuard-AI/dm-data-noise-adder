@@ -1,164 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dm Data Noise Adder: what it is, how it runs, where it stops</title>
-<meta name="description" content="Dm Data Noise Adder is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
-<style>
-:root {
-  --bg: #1a0c0c; --panel: #2a1412; --ink: #f0e6d6;
-  --mut: #381b18;
-  --acc: #c9a24b; --acc2: #94b2c4;
-  --line: #2a1412;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: 'Trebuchet MS', sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Courier New', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-term">
-<!-- This page exists for dm-data-noise-adder alone: the layout (terminal-frame),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Dm Data Noise Adder logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Dm Data Noise Adder</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/dm-data-noise-adder">github.com/ShadowGuard-AI/dm-data-noise-adder</a></p>
-</header>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>dm-data-noise-adder: Newspaper Morgue of Clippings</title>
+<style>@font-face{font-family:Disp;src:url("fonts/Cairo.ttf")}@font-face{font-family:Text;src:url("fonts/Bitter.ttf")}
+body{background:#f3eee1;font-family:Text,serif;color:#3a3733;margin:0}main{max-width:920px;margin:0 auto;padding:28px}
+h1,h2,h3{font-family:Disp,sans-serif;color:#232020}section{background:#e9dcc0;padding:18px 22px;margin:16px 0;border:2px solid #926e40;border-left:6px solid #926e40}
+section.seed{border-left-color:#2a5aa0}img{max-width:100%}button{background:#f6f1e5;color:#232020;border:2px solid #232020;padding:12px 22px;font-family:Disp,sans-serif;clip-path:polygon(0 22%, 12% 0, 88% 0, 100% 22%, 100% 100%, 0 100%)}
+button:hover{color:#000}button:active{transform:translateY(2px)}button:focus{outline:3px double #2a5aa0;outline-offset:3px}
+a{color:#232020}a::before{content:"◯  ";color:#232020}a:hover::before{color:#2a5aa0}
+.label{display:inline-block;border:1px solid #232020;padding:2px 8px;font-size:13px}pre{white-space:pre-wrap;background:#f6f1e5;padding:14px}code{font-family:Text,serif}.stamp{color:#2a5aa0;font-family:Disp,sans-serif}</style></head><body><main>
+<img src="intro-banner.png" alt="Introduction banner: one open clipping envelope in window light on a sorting table, catalogues behind, no writing">
+<h1>dm-data-noise-adder: Newspaper Morgue of Clippings</h1>
+<p>Wherever this site names itself, it uses the joined form dm-data-noise-adder: Newspaper Morgue of Clippings, repository first, theme second. The page is laid out as a card catalogue walked drawer by drawer, each plate a drawer pulled open in turn.</p>
+<img src="logo.png" alt="Logo: a clipping envelope seen from above, flap open, ruled lines empty, uninked stamp oval and a carbon blue tab"><img src="banner.png" alt="Wordmark banner: the morgue aisle, sorting table, catalogue cabinets, bound volumes and a high guarded window, the name on the paper label along the table edge">
+<img src="scene.svg" alt="Animated scene in three bands">
+<p><span class="stamp">◯</span> Date stamp marker</p>
+<div><button type="button">Add the Noise</button></div>
+<p><span class="label">Random Seed</span></p>
+<h3>Output Never Names the Input</h3><h3>Range Flags, Descriptions Missing</h3>
+<section><h2>Drawer one: the job</h2><p>The program adds random noise to numerical data within a specified range to protect privacy while preserving statistical properties, and it uses numpy for efficient numerical operations. A closing line keeps the family sentence the README prints about tools that generate or mask sensitive data with realistic looking but meaningless values. No value from anyone's column and no sample output is printed on this plate or anywhere on this site.</p></section>
+<section><h2>Drawer two: fetching, with one plain repair</h2><p><code>git clone https://github.com/ShadowGuard-AI/dm-data-noise-adder</code></p><p>The line above is labelled a correction. The address printed in the README belongs to a predecessor organisation, so following the printed address literally reaches the wrong house. The corrected line gives the organisation name with its hyphen, as it should, and is never passed off as original wording.</p></section>
+<section><h2>Drawer three: the invocation shape</h2><p><code>./dm-data-noise-adder [params]</code></p><p>That shape is all the source gives: program first, bracketed parameters after. The source publishes no worked call, no input file name, and no column name, so this plate leaves those catalogue lines blank on purpose rather than filling them with an invented example.</p></section>
+<section><h2>Drawer four: the controls in README order</h2><p>Help first, the flag -h, which shows the help message and exits. Then a flag printed as --min_noise, whose source line says no description was provided. Then a flag printed as --max_noise, whose source line also says no description was provided. Then --seed, the random seed for reproducibility, with its printed default given as the word None. This plate repeats the two missing descriptions as absences and does not guess which end of a range either flag controls.</p></section>
+<section><h2>Drawer five: the output guard at full size</h2><p>The output file must not name the input file. A run whose resolved output path is the input file, including through a ./ spelling or a symlink, is refused at exit 1 before any write. Both routes to the same file are named here plainly: the ./ spelling and the symlink.</p></section>
+<section><h2>Drawer six: two licence facts, kept apart</h2><p>First stands the repository LICENSE file itself: MIT terms, holder described by outline only: a pen name first, then a bracketed given name cut down to one initial, then the handle in parentheses. The full wording of that holder line is not reproduced here.</p><p>Second, labelled as a site correction: the README closing line respelled with the current hyphenated organisation where the published line used the predecessor name reads: Copyright (c) ShadowGuard-AI. Site correction.</p></section>
+<section class="seed"><h2>Drawer seven: the reading room</h2><p>Visitors arriving from a search engine land at a request slip desk: they write what they came for, noise, range, seed, numpy, privacy, statistics, and the clerk retrieves exactly one drawer at a time rather than dumping the cabinet. A visitor chasing reproducibility gets the seed drawer, with its None default explained in plain language about repeatable randomness: no fixed seed is promised unless one is supplied, so a supplied seed is what makes a run repeatable. A visitor chasing safety gets the guard drawer, with its refusal, its symlink warning, and its ./ spelling warning, spelled out beside a drawing of two envelopes that must never be merged into one envelope. A visitor chasing provenance gets the filing history drawer: predecessor banner, superseded heading, correction admitted. Telegraphic researchers, impatient editors, students on deadlines, and hobbyists rebuilding old columns for coursework: the desk serves each of them the same courtesy, one drawer, fully opened, contents readable, nothing extra smuggled in, nothing relevant withheld, the drawer pushed back only when the visitor nods. Dust, lamplight, whispered requests, and pencils stubbed short by years of request slips keep their textures in the margins of this room.</p></section>
+<section><h2>The preserved README record</h2><pre>![Banner](banner.png)
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/dm-data-noise-adder">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Dm Data Noise Adder is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Dm Data Noise Adder: 3 files, 129 counted
-          lines across Python 108, Markdown 17, Text 4. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/dm-data-noise-adder.git<br>$ cd dm-data-noise-adder</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 8 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>logging.basicConfig(level=logging.INFO, format=&#x27;%(asctime)s - %(levelname)s - %(message)s&#x27;)
+# dm-data-noise-adder
+Adds random noise to numerical data within a specified range to protect privacy while preserving statistical properties. Uses numpy for efficient numerical operations. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
-def setup_argparse():
-    &quot;&quot;&quot;
-    Sets up the argument parser for the command-line interface.
-    &quot;&quot;&quot;
-    parser = argparse.ArgumentParser(description=&quot;Adds random noise to numerical data within a specified range.&quot;)
-    parser.add_argument(&quot;input_file&quot;, help=&quot;Path to the input CSV file.&quot;)
-    parser.add_argument(&quot;output_file&quot;, help=&quot;Path to the output CSV file.&quot;)
-    parser.add_argument(&quot;column_name&quot;, help=&quot;Name of the column to add noise to.&quot;)
-    parser.add_argument(&quot;--min_noise&quot;, type=float, default=-0.1, help=&quot;Minimum noise value (as a fraction of the data value). Default: -0.1&quot;)
-    parser.add_argument(&quot;--max_noise&quot;, type=float, default=0.1, help=&quot;Maximum noise value (as a fraction of the data value). Default: 0.1&quot;)
-    parser.add_argument(&quot;--seed&quot;, type=int, default=None, help=&quot;Random seed for reproducibility. Default: None&quot;)
+## Install
+`git clone https://github.com/ShadowStrikeHQ/dm-data-noise-adder`
 
-    return parser.parse_args()
+## Usage
+`./dm-data-noise-adder [params]`
 
+## Parameters
+- `-h`: Show help message and exit
+- `--min_noise`: No description provided
+- `--max_noise`: No description provided
+- `--seed`: Random seed for reproducibility. Default: None
 
-def add_noise(data, column_name, min_noise, max_noise, seed=None):
-    &quot;&quot;&quot;
-    Adds random noise to the specified column in a pandas DataFrame.
+The output file must not name the input file. A run whose resolved output path is the input file, including through a `./` spelling or a symlink, is refused at exit 1 before any write.
 
-    Args:</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>108</td></tr>
-        <tr><td><code>README.md</code></td><td>17</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>4</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">setup_argparse, add_noise, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/dm-data-noise-adder/tree/main/dm-data-noise-adder-Visuals">dm-data-noise-adder-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Dm Data Noise Adder">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Dm Data Noise Adder">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Dm Data Noise Adder">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Dm Data Noise Adder is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+## License
+Copyright (c) ShadowStrikeHQ</pre></section>
+</main></body></html>

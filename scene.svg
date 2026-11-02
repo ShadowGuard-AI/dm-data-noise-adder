@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-label="The newspaper morgue in three bands: cabinets and shelving still with dust drifting in the light in the far band, a hand pulling an open catalogue drawer one inch farther out in the middle band, and the same hand lifting and turning the top envelope on the sorting table in the near band">
+<rect width="900" height="300" fill="#e8e0cc"/>
+<polygon points="60,10 190,10 320,100 120,100" fill="#f7ecc0" opacity="0.55"/>
+<g fill="#2a5aa0"><circle cx="140" cy="30" r="3"><animate attributeName="cx" values="140; 168; 140" dur="13s" repeatCount="indefinite"/><animate attributeName="cy" values="30; 62; 30" dur="13s" repeatCount="indefinite"/></circle><circle cx="210" cy="55" r="2"><animate attributeName="cx" values="210; 232; 210" dur="11s" repeatCount="indefinite"/><animate attributeName="cy" values="55; 82; 55" dur="11s" repeatCount="indefinite"/></circle><circle cx="100" cy="70" r="2"><animate attributeName="cx" values="100; 122; 100" dur="15s" repeatCount="indefinite"/></circle></g>
+<g fill="#926e40" stroke="#232020" stroke-width="2"><rect x="330" y="18" width="110" height="82"/><rect x="470" y="18" width="110" height="82"/><rect x="610" y="18" width="110" height="82"/></g>
+<g fill="#f6f1e5" stroke="#232020"><rect x="345" y="32" width="34" height="14"/><rect x="390" y="32" width="34" height="14"/><rect x="485" y="32" width="34" height="14"/><rect x="530" y="32" width="34" height="14"/><rect x="625" y="32" width="34" height="14"/><rect x="670" y="32" width="34" height="14"/></g>
+<g stroke="#232020" stroke-width="3"><line x1="760" y1="24" x2="880" y2="24"/><line x1="760" y1="62" x2="880" y2="62"/></g>
+<g fill="#6e502c"><rect x="766" y="30" width="20" height="32"/><rect x="796" y="26" width="20" height="36"/><rect x="826" y="32" width="20" height="30"/></g>
+<g><animateTransform attributeName="transform" type="translate" values="0 0; 14 0; 14 0; 0 0" dur="10s" repeatCount="indefinite"/>
+<rect x="300" y="128" width="300" height="52" fill="#b28e5c" stroke="#232020" stroke-width="2"/>
+<line x1="315" y1="120" x2="585" y2="120" stroke="#232020" stroke-width="4"/>
+<g fill="#f6f1e5" stroke="#232020"><rect x="330" y="104" width="30" height="34"/><rect x="375" y="100" width="30" height="38"/><rect x="420" y="104" width="30" height="34"/><rect x="465" y="100" width="30" height="38"/><rect x="510" y="104" width="30" height="34"/></g>
+<g fill="#2a5aa0"><rect x="380" y="94" width="20" height="12"/><rect x="470" y="94" width="20" height="12"/></g>
+<path d="M600 140 L636 132 L636 152 L602 154 Z" fill="#d8b47a" stroke="#232020" stroke-width="2"/></g>
+<rect x="0" y="205" width="900" height="95" fill="#6e502c"/>
+<g><animateTransform attributeName="transform" type="rotate" values="0 450 248; 0 450 248; -7 450 248; 0 450 248" dur="12s" repeatCount="indefinite"/>
+<g><animate attributeName="opacity" values="1; 1; 0.55; 1; 1" dur="12s" repeatCount="indefinite"/>
+<polygon points="330,232 570,232 450,188" fill="#b28e5c" stroke="#232020" stroke-width="2"/>
+<rect x="330" y="232" width="240" height="42" fill="#eedcae" stroke="#232020" stroke-width="2"/>
+<line x1="352" y1="250" x2="548" y2="250" stroke="#232020" stroke-width="2"/>
+<line x1="352" y1="264" x2="472" y2="264" stroke="#232020" stroke-width="2"/></g>
+<path d="M586 226 L622 218 L622 240 L588 244 Z" fill="#d8b47a" stroke="#232020" stroke-width="2"/></g>
+<ellipse cx="690" cy="238" rx="34" ry="15" fill="none" stroke="#2a5aa0" stroke-width="3"/>
+<rect x="682" y="252" width="16" height="26" fill="#232020"/><rect x="760" y="252" width="70" height="18" fill="#232020"/>
+</svg>
