@@ -18,14 +18,14 @@ Adds random noise to numerical data within a specified range to protect privacy 
 ![Major separator](sep-heavy.svg)
 
 ## Install
-`git clone https://github.com/ShadowStrikeHQ/dm-data-noise-adder`
+`git clone https://github.com/ShadowGuard-AI/dm-data-noise-adder`
 
 > Catalogue entry: the README clone line names an older organisation.
 
 ![Minor separator](sep-light.svg)
 
 ## Usage
-`./dm-data-noise-adder [params]`
+`python3 main.py input_file output_file column_name [options]`
 
 ![Minor separator](sep-light.svg)
 
@@ -46,7 +46,7 @@ The output file must not name the input file. A run whose resolved output path i
 ![Minor separator](sep-light.svg)
 
 ## License
-Copyright (c) ShadowStrikeHQ
+This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ![Major separator](sep-heavy.svg)
 
